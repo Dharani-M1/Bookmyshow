@@ -24,7 +24,7 @@ public class Bookmyshowaction {
 
         while (!exit){
 
-            System.out.println("---------------------------------------------------------------");
+            System.out.println("--------------------------------------------------------------");
             System.out.println("1.Admin Login");
             System.out.println("2.Customer Login");
             System.out.println("3.Exit");
@@ -36,6 +36,9 @@ public class Bookmyshowaction {
                     Admin a=Adminactions.adminlog(sc);
                     if(a!=null){
                         adminactionsmenu(sc,adminactions,a);
+                    }
+                    else{
+                        System.out.println("Invalid Admin");
                     }
 
                     break;
@@ -49,11 +52,15 @@ public class Bookmyshowaction {
                         if(c!=null){
                                 useractionsmenu(sc,useractions,c);
                         }
+                        else {
+                            System.out.println("User Account Not Found.");
+                        }
                     } else if (num.equals("2")) {
                         User c=Useractions.createcustermor(sc);
-
-                            useractionsmenu(sc,useractions,c);
-
+                        if (c!=null) {
+                            System.out.println("User Account Created Sucessfully");
+                            useractionsmenu(sc, useractions, c);
+                        }
                     }
                     else{
                         System.out.println("Invalid choice");
@@ -76,15 +83,78 @@ public class Bookmyshowaction {
 
 
         }
-
-
     }
 
     private void adminactionsmenu(Scanner sc,Adminactions adminactions,Admin admin){
-        System.out.println("1.Add");
+        boolean exit=false;
+
+        while (!exit) {
+            System.out.println("1.Add theater");
+            System.out.println("2.Add Movie");
+            System.out.println("3.View Theater");
+            System.out.println("4.");
+            System.out.println("5.");
+            System.out.print("Enter Your Choice:");
+            int choice = Integer.parseInt(sc.nextLine());
+
+            switch (choice){
+                case 1:
+                    adminactions.addtheater(sc);
+                    break;
+                case 2:
+                    adminactions.addmovie(sc);
+                    break;
+                case 3:
+                    adminactions.viewtheater();
+
+                    break;
+                case 4:
+
+                    break;
+
+                case 5:
+                    exit=true;
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice, Enter Valid Choice ");
+                    break;
+
+
+
+            }
+        }
+
     }
     private void useractionsmenu(Scanner sc,Useractions useractions,User user){
-
         System.out.println("1.Add");
+
+        System.out.print("Enter Your Choice:");
+        int choice = Integer.parseInt(sc.nextLine());
+        switch (choice){
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4 :
+
+                break;
+
+
+            default:
+                System.out.println("Invalid Choice, Enter Valid Choice ");
+                break;
+
+
+        }
+
     }
 }

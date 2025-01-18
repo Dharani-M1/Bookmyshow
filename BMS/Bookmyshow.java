@@ -1,12 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Bookmyshow {
 
     private static ArrayList<Admin>admins=new ArrayList<>();
     private static ArrayList<User>users=new ArrayList<>();
-
-
-
+    private static HashMap<String,Theater>theaterHashMap=new HashMap<>();
 
 
     public static ArrayList<Admin> getAdmins() {
@@ -23,5 +22,9 @@ public class Bookmyshow {
 
     public static void setUsers(ArrayList<User> users) {
         Bookmyshow.users = users;
+    }
+
+    public static HashMap<String,Theater> getTheaterHashMap() {
+        return theaterHashMap;
     }
 }

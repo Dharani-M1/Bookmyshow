@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Useractions {
 
-    public static User customerlog(Scanner sc){
+    public static User customerlog(Scanner sc) {
 
         System.out.print("Enter Username: ");
         String username = sc.nextLine();
@@ -10,13 +10,13 @@ public class Useractions {
 
 
         for (User u : Bookmyshow.getUsers()) {
-                if (u.getUsername().equals(username)) {
-                    userr = u;
-                    break;
-                }
+            if (u.getUsername().equals(username)) {
+                userr = u;
+                break;
+            }
         }
 
-        if (userr!=null) {
+        if (userr != null) {
             System.out.print("Enter User Pin: ");
             String password = sc.nextLine();
 
@@ -26,33 +26,34 @@ public class Useractions {
             } else {
                 System.out.println("Invalid Pin.");
             }
-        } else {
-            System.out.println("User Account Not Found.");
         }
-
         return null;
     }
 
-    public static User createcustermor(Scanner sc){
+    public static User createcustermor(Scanner sc) {
         System.out.println("Enter New Username:");
-        String newusername=sc.nextLine();
-        boolean cus=false;
+        String newusername = sc.nextLine();
+        User user = null;
 
-        for(User newuser:Bookmyshow.getUsers()) {
-
-                if (newuser.getUsername().equals(newusername)) {
-                    System.out.println("Username Already Exist,Try Another");
-                    cus=true;
-                }
-
+        for (User newuser : Bookmyshow.getUsers()) {
+            if (newuser.getUsername().equals(newusername)) {
+                System.out.println("Username Already Exist,Try Another");
+                user = newuser;
+                break;
+            }
         }
-        if(!cus){
+        if (user == null) {
+
             System.out.println("Enter New Password : ");
-            String newpassword=sc.nextLine();
-            Bookmyshow.getUsers().add(new User(newusername,newpassword));
+            String newpassword = sc.nextLine();
+            System.out.println("Enter Location :");
+            String loc = sc.nextLine();
 
+            User userr=(new User(newusername,newpassword,loc));
+            Bookmyshow.getUsers().add(userr);
+            return userr;
         }
-
-      return null;
+        return null;
     }
 }
+
